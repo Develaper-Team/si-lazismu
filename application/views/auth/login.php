@@ -2,7 +2,7 @@
 <div class="card">
     <div class="card-body login-card-body">
         <?= $this->session->flashdata('message') ?>
-        <form action="<?= base_url('') ?>auth" method="post">
+        <form action="<?= base_url('') ?>dashboard" method="post">
             <div class="form-group">
                 <input type="text" name="email" id="email" class="form-control" placeholder="Email">
                 <?= form_error('username', '<small class="text-danger pl-3">', '</small>') ?>

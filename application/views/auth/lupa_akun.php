@@ -20,7 +20,7 @@
 
         </form>
         <p class="mb">
-            <center><a href="<?= base_url(); ?>">Kembali</a> </center>
+            <center><a href="<?= base_url('Auth'); ?>">Kembali</a> </center>
         </p>
     </div>
     <!-- /.login-card-body -->

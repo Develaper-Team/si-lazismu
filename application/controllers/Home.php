@@ -1,39 +1,27 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller
-{
-    public function index()
-    {
-        $data['title'] = "Dashboard";
-        $data['pegawai'] = $this->db->get_where('pegawai', ['email' => $this->session->userdata('email')])->row_array();
-        if ($data['pegawai']['level'] == 1) {
-            $this->load->view('Admin/dashboard', $data);
-        } else if ($data['pegawai']['level'] == 2) {
-            $this->load->view('Karyawan/dashboard', $data);
-        } else {
-            redirect('auth');
-        }
-    }
+class Home extends CI_Controller {
 
-
-    public function Pemasukan()
-    {
-        $data['title'] = "Pemasukan";
-        $data['pegawai'] = $this->db->get_where('pegawai', ['email' => $this->session->userdata('email')])->row_array();
-        if ($data['pegawai']['level'] == 1) {
-            $this->load->view('Admin/Pemasukan', $data);
-        } else if ($data['pegawai']['level'] == 2) {
-            $this->load->view('Karyawan/Pemasukan', $data);
-        } else {
-            redirect('auth');
-        }
-    }
-
-    public function logout()
-    {
-        $this->session->unset_userdata('email');
-        $this->session->set_flashdata('message', '<div class="form-group"> <div class="alert-success" role="alert"><center>Kamu telah keluar!</center></div></div>');
-        redirect('auth');
-    }
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL
+	 * 		http://example.com/index.php/welcome
+	 *	- or -
+	 * 		http://example.com/index.php/welcome/index
+	 *	- or -
+	 * Since this controller is set as the default controller in
+	 * config/routes.php, it's displayed at http://example.com/
+	 *
+	 * So any other public methods not prefixed with an underscore will
+	 * map to /index.php/welcome/<method_name>
+	 * @see https://codeigniter.com/user_guide/general/urls.html
+	 */
+	public function index()
+	{
+		$this->load->view('template_wp/header');
+		$this->load->view('Webprofile/v_home');
+		$this->load->view('template_wp/footer');
+	}
 }
